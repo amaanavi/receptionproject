@@ -2,6 +2,15 @@
 
 import { useState } from "react";
 
+const PARAGRAPHS = [
+  "NOSTOS retells Books 9 and 10 of the Odyssey as an Instagram feed of someone following the adventures of the general and his men. Odysseus posts the Apologoi with the Lotus-Eaters, the Cyclops, Aiolos, the Laestrygonians, and Circe with his crew’s comment section underneath. This form follows from the poem of Books 9 and 10 as a first-person testimony, delivered by a man asking his audience for a ship. Odysseus records his crew objecting at almost every stage, begging him to take cheese and leave the cave, begging him to stop shouting at Polyphemus, their grievance about Aiolos's bag and more. The poem preserves every objection and then keeps the microphone with the man being objected to. The comment sections take it away from Odysseus and show the feelings of the crew.",
+  "The deliberate anachronism is that the crew can write and record their story permanently online on social media. The mechanism stages the dissent of the poem in a direct way towards Odysseus written for public view for eternity. Homer names only four crewmen across two books and kills roughly six hundred, so the recurring commenters here are invented and declared as such with some even carrying ship numbers in their NOSTOS handles. Between the Aiolos post and the Laestrygonians, four stop writing and never appear again. No caption or comment or image says that any one person has died, though, as Odysseus was not one for indulging that kind of thing. There is a running tally in the comments that moves from twelve ships to one and 46 men. Odysseus also writes in full sentences while his crew write in lowercase and poor grammar and punctuation. That gap is the argument that the man with rhetoric survives to tell it, and the men without it are audible only in the spaces they exist in. Odysseus’s men do not have the education or intelligence to be the ones who tell their story.",
+  "The last post belongs to Elpenor, not Odysseus. Elpenor is the youngest crew member, the only named crew member, whom the poem describes only in order to insult. He is not much of a fighter, not especially bright, not especially well respected, and assigned to carrying things rather than more important duties. He gets no likes and no replies and the feed declines to agree with the poem about him. Nothing here contradicts the poem as every objection is in NOSTOS, but it changes who is left with the last words and leaves the internet with a perfect record of the accounts of the Odyssey.",
+];
+
+const AI_NOTE =
+  "As a note to the viewer, AI was used in this project singularly to create the website. I have the capability to create a website like this, but it is something which would have taken me a significantly longer amount of time. The comments and words in this project, however, are written by me. The ultimate purpose of this project is to portray the dissent and disapproval of the crew through a modern lens on a platform that would store their anger (or support) permanently. For a close reader, the passing of tragedies, death, and yearning for homecoming can be seen through the posts and comments.";
+
 export default function AboutPanel() {
   const [open, setOpen] = useState(false);
 
@@ -17,71 +26,24 @@ export default function AboutPanel() {
       {open && (
         <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/60 p-4 sm:p-8" onClick={() => setOpen(false)}>
           <div
-            className="my-4 w-full max-w-2xl rounded-2xl bg-[var(--ig-bg)] p-6 text-sm leading-relaxed text-[var(--ig-text)] shadow-2xl sm:p-8"
+            className="my-4 w-full max-w-2xl rounded-2xl bg-[var(--ig-bg)] p-6 text-[15px] leading-relaxed text-[var(--ig-text)] shadow-2xl sm:p-8"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-4 flex items-start justify-between">
-              <h2 className="text-lg font-semibold">NOSTOS — a note for the reader</h2>
+            <div className="mb-5 flex items-start justify-between">
+              <h2 className="logo text-2xl">Nostos</h2>
               <button onClick={() => setOpen(false)} aria-label="Close" className="text-xl text-[var(--ig-text-muted)]">✕</button>
             </div>
 
-            <p className="mb-4 text-[var(--ig-text-muted)]">
-              An eight-post feed of <i>Odyssey</i> 9–10 — the Apologoi, Odysseus&apos;s own first-person
-              account of the Cyclops, Aiolos, the Laestrygonians and Circe, told to the Phaeacians
-              in exchange for a ship home.
-            </p>
+            {PARAGRAPHS.map((p, i) => (
+              <p key={i} className="mb-4">{p}</p>
+            ))}
 
-            <Section title="The mechanic">
-              Seven crew comment across posts 2–5. Between post 5 and post 6, four of them stop writing and
-              never write again. No caption, comment or image ever states that anyone has died. Antiphos is
-              last heard in post 3 (the cave). Stichios and Ophelestes are last heard in post 5 (crushed at
-              Telepylos with the other eleven ships). Perimedes posts a running ship-count under every post;
-              at post 6 it reads &ldquo;one ship,&rdquo; and then he stops. The deaths are in the poem — not
-              stating them is the argument in miniature.
-            </Section>
+            <hr className="my-5 border-[var(--ig-hairline)]" />
 
-            <Section title="The count">
-              @perimedes.rows and the two ship-numbered handles quietly announce their own ending from post 2.
-              Twelve, twelve, twelve, twelve — one. Then Elpenor falls off a roof and the last subtraction is
-              left to you.
-            </Section>
-
-            <Section title="The typography">
-              Odysseus writes in complete sentences with capitals and paragraph breaks — he is composing.
-              The crew write in lowercase run-ons — they are talking. The register gap is the central device:
-              the man with rhetoric is the man who survives to tell it, and the men without it are audible only
-              in the gaps he leaves. The crew&apos;s lowercase is voice, not error.
-            </Section>
-
-            <Section title="Reverse chronology">
-              Posts are in narrative order; the feed shows them newest-first, so your first sight is Elpenor on
-              the roof and you scroll down into the past. The Apologoi are already a retrospective told out of
-              order — a feed that shows the ending first and buries the beginning is doing what the poem does.
-            </Section>
-
-            <Section title="Provenance">
-              Named in the text: Odysseus, Eurylochos, Polites, Elpenor, Polyphemos, Alkinoös, Arete, Nausikaa,
-              Demodokos. Invented: @perimedes.rows, @antiphos.oikos, @stichios.shipfour, @ophelestes.ix. Homer
-              names four of the crew and kills roughly six hundred; the project cannot stage crew dissent without
-              giving the crew names, and that it has to is itself the finding. Declared anachronism: the crew can
-              write.
-            </Section>
-
-            <p className="mt-6 text-xs text-[var(--ig-text-faint)]">
-              A reception project · Odyssey 9–10 · eight-post feed. Line references appear beneath each post.
-            </p>
+            <p className="text-[var(--ig-text-muted)]">{AI_NOTE}</p>
           </div>
         </div>
       )}
     </>
-  );
-}
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="mb-4">
-      <h3 className="mb-1 font-semibold">{title}</h3>
-      <p className="text-[var(--ig-text)]">{children}</p>
-    </div>
   );
 }
