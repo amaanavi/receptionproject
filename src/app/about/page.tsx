@@ -1,6 +1,8 @@
-"use client";
+import Link from "next/link";
 
-import { useState } from "react";
+export const metadata = {
+  title: "About · NOSTOS",
+};
 
 const PARAGRAPHS = [
   "NOSTOS retells Books 9 and 10 of the Odyssey as an Instagram feed of someone following the adventures of the King of Ithaka and his men. Odysseus posts the Apologoi with the Lotus-Eaters, the Cyclops, Aiolos, the Laestrygonians, and Circe with his crew’s comment section underneath. This form follows from the poem of Books 9 and 10 as a first-person testimony, delivered by a man asking his audience for a ship. Odysseus records his crew objecting at almost every stage, begging him to take cheese and leave the cave, begging him to stop shouting at Polyphemus, their grievance about Aiolos's bag and more. The poem preserves every objection and then keeps the microphone with the man being objected to. The comment sections take it away from Odysseus and show the feelings of the crew.",
@@ -11,39 +13,40 @@ const PARAGRAPHS = [
 const AI_NOTE =
   "As a note to the viewer, AI was used in this project singularly to create the website. I have the capability to create a website like this, but it is something which would have taken me a significantly longer amount of time. The comments and words in this project, however, are written by me. The ultimate purpose of this project is to portray the dissent and disapproval of the crew through a modern lens on a platform that would store their anger (or support) permanently. For a close reader, the passing of tragedies, death, and yearning for homecoming can be seen through the posts and comments.";
 
-export default function AboutPanel() {
-  const [open, setOpen] = useState(false);
-
+export default function AboutPage() {
   return (
-    <>
-      <button
-        onClick={() => setOpen(true)}
-        className="rounded-full border border-[var(--ig-hairline)] px-3 py-1 text-xs font-semibold text-[var(--ig-text)] transition hover:bg-[var(--ig-hairline)]"
-      >
-        About this project
-      </button>
-
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/60 p-4 sm:p-8" onClick={() => setOpen(false)}>
-          <div
-            className="my-4 w-full max-w-2xl rounded-2xl bg-[var(--ig-bg)] p-6 text-[15px] leading-relaxed text-[var(--ig-text)] shadow-2xl sm:p-8"
-            onClick={(e) => e.stopPropagation()}
+    <div className="min-h-screen bg-[var(--ig-canvas)] text-[var(--ig-text)]">
+      {/* top bar */}
+      <header className="sticky top-0 z-40 border-b border-[var(--ig-hairline)] bg-[var(--ig-bg)]/95 backdrop-blur">
+        <div className="mx-auto flex max-w-[975px] items-center justify-between px-4 py-3">
+          <Link href="/" className="logo text-2xl leading-none">Nostos</Link>
+          <Link
+            href="/"
+            className="rounded-full border border-[var(--ig-hairline)] px-3 py-1 text-xs font-semibold text-[var(--ig-text)] transition hover:bg-[var(--ig-hairline)]"
           >
-            <div className="mb-5 flex items-start justify-between">
-              <h2 className="logo text-2xl">Nostos</h2>
-              <button onClick={() => setOpen(false)} aria-label="Close" className="text-xl text-[var(--ig-text-muted)]">✕</button>
-            </div>
-
-            {PARAGRAPHS.map((p, i) => (
-              <p key={i} className="mb-4">{p}</p>
-            ))}
-
-            <hr className="my-5 border-[var(--ig-hairline)]" />
-
-            <p className="text-[var(--ig-text-muted)]">{AI_NOTE}</p>
-          </div>
+            ← Back to feed
+          </Link>
         </div>
-      )}
-    </>
+      </header>
+
+      <main className="mx-auto max-w-2xl px-5 py-10 sm:py-14">
+        <h1 className="logo mb-2 text-4xl">Nostos</h1>
+        <p className="mb-8 text-sm uppercase tracking-widest text-[var(--ig-text-muted)]">About this project</p>
+
+        <div className="text-[15px] leading-relaxed sm:text-base">
+          {PARAGRAPHS.map((p, i) => (
+            <p key={i} className="mb-5">{p}</p>
+          ))}
+
+          <hr className="my-8 border-[var(--ig-hairline)]" />
+
+          <p className="text-[var(--ig-text-muted)]">{AI_NOTE}</p>
+        </div>
+
+        <div className="mt-12">
+          <Link href="/" className="text-sm font-semibold text-[#0095f6]">← Back to the feed</Link>
+        </div>
+      </main>
+    </div>
   );
 }

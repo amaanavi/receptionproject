@@ -1,5 +1,5 @@
+import Link from "next/link";
 import HomeFeed from "@/components/HomeFeed";
-import AboutPanel from "@/components/AboutPanel";
 import { Icon } from "@/components/ui";
 
 export default function Home() {
@@ -12,7 +12,12 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <span className="hidden text-[var(--ig-text)] sm:block"><Icon.Heart /></span>
             <span className="hidden text-[var(--ig-text)] sm:block"><Icon.Share /></span>
-            <AboutPanel />
+            <Link
+              href="/about"
+              className="rounded-full border border-[var(--ig-hairline)] px-3 py-1 text-xs font-semibold text-[var(--ig-text)] transition hover:bg-[var(--ig-hairline)]"
+            >
+              About this project
+            </Link>
           </div>
         </div>
       </header>
